@@ -1,0 +1,6 @@
+1 cd database
+2 docker build -t p19_aa .
+3 docker tag p19_aa azz1moff/p19_aa
+4 docker login
+5 docker push azz1moff/p19_aa
+

@@ -1,0 +1,75 @@
+
+    Gafurov Faxriddin P19
+    V-1
+
+1.
+SELECT a.actor_id, a.first_name, a.last_name, a.last_update, array_agg(f.title) FROM film_actor fa
+JOIN actor a on a.actor_id = fa.actor_id
+JOIN public.film f on f.film_id = fa.film_id
+GROUP BY a.actor_id, a.first_name, a.last_name, a.last_update;
+
+
+2.
+import asyncpg
+import asyncio
+
+a = 'A'
+
+
+async def function_name(start_str: str):
+    con = await asyncpg.connect(
+        user='postgres',
+        password='1',
+        database='dvdrental',
+        host='localhost',
+        port='5432'
+    )
+
+    query = f"""
+        SELECT a.first_name, a.last_name
+        FROM actor a
+        WHERE a.first_name LIKE '{start_str}%'
+           OR a.last_name LIKE '{start_str}%';
+    """
+    results = await con.fetch(query)
+    print(results)
+
+
+asyncio.run(function_name(a))
+
+
+5.
+import asyncpg
+import asyncio
+
+
+async def function_name():
+    con = await asyncpg.connect(
+        user='postgres',
+        password='1',
+        database='exam',
+        host='localhost',
+        port='5432'
+    )
+
+    query = f"""
+        SELECT a.student_id, f.course_id array_agg(f.student_id)
+        FROM students_courses fa
+                 JOIN students a on a.student_id = fa.student_id
+                 JOIN courses f on f.course_id = fa.course_id
+        GROUP BY a.student_id, f.course_id;
+
+    """
+    results = await con.fetch(query)
+    for i in results:
+        n = 0
+        for j in i['array_agg']:
+            n += 1
+        q = f"""
+            UPDATE actor SET film_count = {n} where student_id = {i['student_id']} ;
+        """
+        r = await con.fetch(q)
+
+asyncio.run(function_name())
+
+# savolga yaxshi tushunmaganim uchun 100% to`g`riligiga ishonchim komil emas

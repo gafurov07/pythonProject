@@ -1,0 +1,34 @@
+[
+    {
+        "id": 2,
+        "Fullname": "Botirjon1",
+        "Passport_id": "M123457",
+        "Password": 1111,
+        "Balance": 70000,
+        "card_number": 86000855678945236
+    },
+    {
+        "id": 3,
+        "Fullname": "Botirjon2",
+        "Passport_id": "M123458",
+        "Password": 1212,
+        "Balance": 15798855,
+        "card_number": 8600088886489310
+    },
+    {
+        "id": 3,
+        "Fullname": "Botirjon3",
+        "Passport_id": "M123459",
+        "Password": 8520,
+        "Balance": 1000000,
+        "card_number": 860003087878787
+    },
+    {
+        "id": 4,
+        "Fullname": "FAxriddin",
+        "Passport_id": "N7654321",
+        "Password": 5678,
+        "Balance": 0,
+        "card_number": 814622577710
+    }
+]
